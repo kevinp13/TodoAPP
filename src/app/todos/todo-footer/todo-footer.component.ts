@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
-import { filtersValid, setFilter } from 'src/app/filter/filter.actions';
 import { clearCompleted } from '../todo.actions';
+import { AppState } from '../../app.reducer';
+import { filtersValid, setFilter } from '../../filter/filter.actions';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-todo-footer',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './todo-footer.component.html',
   styleUrls: ['./todo-footer.component.scss']
 })
 export class TodoFooterComponent implements OnInit {
 
-  currentFilter:filtersValid;
+  currentFilter:filtersValid = 'all';
   filters: filtersValid[] = ['all','completed','pending'];
-  pendingTasks:number;
+  pendingTasks:number = 0;
 
   constructor( private store:Store<AppState>) { }
 

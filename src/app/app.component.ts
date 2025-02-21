@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { TodoPageComponent } from "./todos/todo-page/todo-page.component";
+import { FooterComponent } from "./footer/footer.component";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [TodoPageComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'prueba2';
+  title = 'TodoAPP';
 }

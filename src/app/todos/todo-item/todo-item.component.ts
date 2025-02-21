@@ -1,24 +1,28 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 
 import { Todo } from '../models/todo.model';
 import { deleteTodo, edit, toggle } from '../todo.actions';
+import { AppState } from '../../app.reducer';
 
 @Component({
   selector: 'app-todo-item',
+  standalone: true,
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit {
 
-  chkCompleted:FormControl;
-  txtInput:FormControl;
+  chkCompleted:FormControl = new FormControl();
+  txtInput:FormControl = new FormControl();
   isEditing= false;
-  @ViewChild('inputEdit') txtInputEdit: ElementRef;
-  @Input() todo:Todo;
+  @ViewChild('inputEdit') txtInputEdit!: ElementRef;
+  @Input() todo!:Todo;
   constructor(private cdr:ChangeDetectorRef, private store:Store<AppState>) { }
 
 

@@ -3,7 +3,8 @@ import { filtersValid } from '../filter/filter.actions';
 import { Todo } from './models/todo.model';
 
 @Pipe({
-  name: 'filterTasks'
+  name: 'filterTasks',
+  standalone: true,
 })
 export class FilterPipe implements PipeTransform {
 
