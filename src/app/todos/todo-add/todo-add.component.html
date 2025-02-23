@@ -3,7 +3,7 @@
   <input
   class="new-todo"
   [formControl]="txtInput"
-  (keyup.enter)="addTodo()"
+  (keydown.enter)="addTodo()"
   placeholder="¿Qué quieres hacer?"
   autofocus>
 </header>
